@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+</head>
+<title>Sin: I trust user input</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+</script>
+</head>
+<body>
+<a href="/"> Home </a>
+<h1>Welcome {{ user | safe}}</h1>
+
+</body>
+</html>

